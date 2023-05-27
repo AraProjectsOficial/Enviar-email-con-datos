@@ -2,7 +2,7 @@
 
 <label class="block">
     <label for="{{$name}}" class="font-semibold text-xl">{{$label}}</label>
-    <input type="file" name="{{$name}}" {{$attributes->merge(['class' => 'block w-full text-sm text-slate-500
+    <input type="file" name="{{$name}}" accept="image/*" {{$attributes->merge(['class' => 'block w-full text-sm text-slate-500
     file:mr-4 file:py-2 file:px-4
     file:rounded-full file:border-0
     file:text-sm file:font-semibold
