@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SendEmailController::class, 'viewForm']);
-
 Route::controller(SendEmailController::class)->group(function(){
     Route::get('/', 'viewForm')->name('inicio');
-    Route::get('/sendEmail', 'sendEmail')->name('sendEmail');
+    Route::post('/sendEmail', 'sendEmail')->name('sendEmail');
 });

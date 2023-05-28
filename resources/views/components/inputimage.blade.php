@@ -10,3 +10,6 @@
     hover:file:bg-violet-100
     mt-4'])}} />
 </label>
+<p class="mb-8 font-semibold font-light text-red-500 mt-2">
+    {{$errors->first($name);}}
+</p>

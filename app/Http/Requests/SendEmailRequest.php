@@ -11,7 +11,7 @@ class SendEmailRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -28,6 +28,18 @@ class SendEmailRequest extends FormRequest
             'subject' => 'required',
             'issue' => 'required',
             'images' => 'required'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El campo nombre es requerido',
+            'identifier.required' => 'El número identificador unico del empleado es solicitado',
+            'area.required' => 'El área del empleado es solicitada',
+            'subject.required' => 'El tema del correo electrónico es requerido',
+            'issue.required' => 'El asunto del correo electrónico es requerido',
+            'images.required' => 'Imagenes de referencia son requeridas'
         ];
     }
 }
