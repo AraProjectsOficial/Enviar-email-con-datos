@@ -13,12 +13,16 @@ class AvisoMailable extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
-    public function __construct()
+    public $name, $identifier, $area, $subject, $issue, $imgs;
+
+    public function __construct($name, $identifier, $area, $subject, $issue, $imgs)
     {
-        //
+        $this->name = $name;
+        $this->identifier = $identifier;
+        $this->area = $area;
+        $this->subject = $subject;
+        $this->issue = $issue;
+        $this->imgs = $imgs;
     }
 
     /**
@@ -27,7 +31,7 @@ class AvisoMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Aviso Importante',
+            subject: $this->issue,
         );
     }
 
@@ -37,7 +41,7 @@ class AvisoMailable extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'emails.aviso',
         );
     }
 

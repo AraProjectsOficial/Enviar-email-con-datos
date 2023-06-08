@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Enviar email</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-black flex flex-col items-center">
+<x-app-layouts title='Formulario'>
     <h1 class="text-3xl text-white font-semibold text-center my-8 font-mono">Formulario de datos</h1>
-    <div class="flex justify-center bg-white w-5/12 rounded-2xl shadow-2xl shadow-[#000CFF] p-[50px]">
-        <form method="POST" action="{{route('sendEmail')}}" class="flex flex-col w-full">
+    <div class="flex justify-center bg-white w-5/12 rounded-2xl shadow-2xl shadow-[#000CFF] p-[50px]" >
+        <form method="POST" action="{{route('sendEmail')}}" class="flex flex-col w-full" enctype="multipart/form-data">
             @csrf
             <x-input label="Nombre:" name="name" type="text" placeholder="Nombre del destinatario" value="{{ old('name') }}" />
-
+    
             <x-input label="Número de socio:" name="identifier" type="number" placeholder="Ingresa el identificador unico del trabajador" value="{{old('identifier')}}" />
             <x-select label="Área: " name="area">
                 <option value="Maquila" {{ old('area') == 'Maquila' ? 'selected' : '' }} >Maquila</option>
@@ -32,11 +23,18 @@
                 <option value="Cumpleaños" {{ old('subject') == 'Cumpleaños' ? 'selected' : '' }} >Cumpleaños</option>
             </x-select>
             <x-input label="Asunto: " name="issue" type="text" placeholder="Ingresa el asunto del correo electrónico"/>
-            <x-inputimage label="Imagenes referentes:" name="images" multiple />
+            <x-inputimage label="Imagenes referentes:" name="images[]" multiple />
             <div class="flex justify-center">
                 <x-btn message="Enviar" />
             </div>
         </form>
     </div>
-</body>
-</html>
+    @if (session('alert'))    
+        <div class="fixed bottom-0 right-0 p-4 w-3/12" id="father">
+            <x-alertsuccess title="Esto es una prueba">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum saepe, quae facere dolor sit dicta
+                mollitia quam laborum.
+            </x-alertsuccess>
+        </div>    
+    @endif
+</x-app-layouts>
