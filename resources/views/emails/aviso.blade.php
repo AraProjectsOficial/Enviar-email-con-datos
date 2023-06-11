@@ -1,7 +1,7 @@
 <x-app-layouts title="Envio de formulario">
     <div class="w-full bg-cyan-950 h-screen flex justify-center items-center">
         <div class="bg-white w-6/12 h-[450px] rounded-2xl p-[50px] ">
-            <h1 class="text-3xl font-medium text-center mb-8">{{$issue}}</h1>
+            <h1 class="text-3xl font-medium text-center mb-8 text-gray-400" >{{$issue}}</h1>
             <ol>
                 <li class="list-disc text-lg font-semibold">Nombre: <span class="font-normal">{{$name}}</span></li>
                 <li class="list-disc text-lg font-semibold">Número de empleado: <span

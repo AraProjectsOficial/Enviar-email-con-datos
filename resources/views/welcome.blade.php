@@ -37,4 +37,7 @@
             </x-alertsuccess>
         </div>    
     @endif
+    @if (session('mensaje'))
+        <p>{{session('mensaje')}}</p>
+    @endif
 </x-app-layouts>

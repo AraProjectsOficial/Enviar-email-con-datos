@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SendEmailRequest;
 use App\Mail\AvisoMailable;
 use Illuminate\Support\Facades\Mail;
-use Session;
+use Illuminate\Support\Facades\Session;
 
 class SendEmailController extends Controller
 {
@@ -24,17 +24,10 @@ class SendEmailController extends Controller
             $imgs[] = $imagen->storeAs('public/imagenes', $nombre);
         }
 
-        $correo = new AvisoMailable(
-            $request->name,
-            $request->identifier,
-            $request->area,
-            $request->subject,
-            $request->issue,
-            $imgs
-        );
+        $correo = new AvisoMailable($request, $imgs);
 
         Mail::to('al222111269@gmail.com')->send( $correo );
 
-        return view('welcome');
+        return redirect()->route('inicio')->with('mensaje', 'Holiiiiiii!!!!!');
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -15,13 +14,13 @@ class AvisoMailable extends Mailable
 
     public $name, $identifier, $area, $subject, $issue, $imgs;
 
-    public function __construct($name, $identifier, $area, $subject, $issue, $imgs)
+    public function __construct($contenido, $imgs)
     {
-        $this->name = $name;
-        $this->identifier = $identifier;
-        $this->area = $area;
-        $this->subject = $subject;
-        $this->issue = $issue;
+        $this->name = $contenido->name;
+        $this->identifier = $contenido->identifier;
+        $this->area = $contenido->area;
+        $this->subject = $contenido->subject;
+        $this->issue = $contenido->issue;
         $this->imgs = $imgs;
     }
 
